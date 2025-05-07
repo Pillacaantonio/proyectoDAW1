@@ -5,19 +5,13 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class EjecutableHash {
 
     public static void main(String[] args) {
-        String rawPassword = "1234";  // La contraseña en texto plano
+        String rawPassword = "Acceso_2012";  // La contraseña en texto plano
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String hashedPassword = passwordEncoder.encode(rawPassword);
 
         System.out.println("Contraseña en texto plano: " + rawPassword);
         System.out.println("Contraseña hasheada: " + hashedPassword);
 
-        // Para verificar la contraseña (en el proceso de inicio de sesión, por ejemplo):
-        // String passwordFromDatabase = hashedPassword; // Recupera el hash de la base de datos
-        // if (passwordEncoder.matches(rawPassword, passwordFromDatabase)) {
-        //     System.out.println("La contraseña coincide.");
-        // } else {
-        //     System.out.println("La contraseña no coincide.");
-        // }
+
     }
 }
