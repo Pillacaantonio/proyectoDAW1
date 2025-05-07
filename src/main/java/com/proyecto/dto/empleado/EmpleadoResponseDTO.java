@@ -16,10 +16,15 @@ public class EmpleadoResponseDTO {
     private String telefono;
     private String direccion;
     private LocalDate fechaNacimiento;
+    private LocalDate fechaIngreso;
     private Double sueldo;
     private Long departamentoId;
     private String descripcionDepartamento;
     private Long horarioId;
     private String descripcionHorario;
     private Boolean estado;
+    //Vacaciones
+    private int diasAcumulados;
+    private int diasConsumidos;
+    private int diasDisponibles;
 }

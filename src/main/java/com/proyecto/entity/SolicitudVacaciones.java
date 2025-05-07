@@ -3,6 +3,7 @@ package com.proyecto.entity;
 import com.proyecto.auditoria.Auditable;
 import com.proyecto.auditoria.AuditorListenerGenérico;
 import com.proyecto.entity.enums.Documento;
+import com.proyecto.entity.enums.EstadoSolicitudVacaciones;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -17,37 +18,18 @@ import java.time.LocalDateTime;
 @Builder
 @EntityListeners(AuditorListenerGenérico.class)
 
-public class Empleado  implements Auditable {
+public class SolicitudVacaciones implements Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nombre;
-    private String apellidoPaterno;
-    private String apellidoMaterno;
-    private String email;
-    private String telefono;
-    private String direccion;
-    private LocalDate fechaNacimiento;
-    private LocalDate fechaIngreso;
-    private Double sueldo;
-    private Boolean estado = true;
+    private LocalDate fechaInicio;
+    private LocalDate fechaFin;
+    private String motivo;
     @Enumerated(EnumType.STRING)
-    private Documento documento;
+    private EstadoSolicitudVacaciones estado;
     @ManyToOne
-    @JoinColumn(name = "horario_id")
-    private Horario horario;
-
-    @ManyToOne
-    @JoinColumn(name = "departamento_id")
-    private Departamento departamento;
-    public Boolean getEstado() {
-        return estado;
-    }
-
-    public void setEstado(Boolean estado) {
-        this.estado = estado;
-    }
-
+    @JoinColumn(name = "empleado_id")
+    private Empleado empleado;
     //Auditoria
     private LocalDateTime fechaCreacion;
     private LocalDateTime fechaModifica;
